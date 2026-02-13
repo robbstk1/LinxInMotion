@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição - Linx Em Movimento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-purple: #1a0033;
+            --main-purple: #2d005e;
+            --yellow: #f2bc00;
+            --magenta: #ff2d88;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, var(--main-purple) 0%, var(--dark-purple) 100%);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--magenta);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(255, 45, 136, 0.2);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--yellow);
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .form-group { margin-bottom: 20px; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--yellow);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        input:focus { border-color: var(--yellow); outline: none; }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .radio-item input { width: auto; cursor: pointer; }
+
+        button {
+            width: 100%;
+            background: var(--yellow);
+            color: var(--dark-purple);
+            border: none;
+            padding: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background: var(--magenta);
+            color: white;
+            box-shadow: 0 0 20px var(--magenta);
+            transform: translateY(-3px);
+        }
+
+        .optional { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: none; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Inscrição: Linx em Movimento</h1>
+        
+        <!-- Altere o action para sua URL do Formspree ou SheetMonkey -->
+        <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+            
+            <!-- INFO PESSOAL -->
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Como quer ser chamado?" required>
+            </div>
+
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 1;">
+                    <label for="idade">Idade <span class="optional">(Opcional)</span></label>
+                    <input type="number" id="idade" name="idade">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="peso">Peso (kg) <span class="optional">(Opcional)</span></label>
+                    <input type="number" id="peso" name="peso" step="0.1">
+                </div>
+            </div>
+
+            <!-- INFO EMPRESA -->
+            <div class="form-group">
+                <label for="unidade">Unidade de Negócio</label>
+                <select id="unidade" name="unidade" required>
+                    <option value="" disabled selected>Selecione sua unidade</option>
+                    <option value="Linx Core">Linx Core</option>
+                    <option value="Linx Digital">Linx Digital</option>
+                    <option value="Linx Pay">Linx Pay</option>
+                    <option value="Outra">Outra</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="squad">Squad / Liderança Direta</label>
+                <input type="text" id="squad" name="squad" placeholder="Ex: Squad Checkout / Gestor Fulano" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nível da Função</label>
+                <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="funcao" value="N1" required> N1</label>
+                    <label class="radio-item"><input type="radio" name="funcao" value="N2"> N2</label>
+                    <label class="radio-item"><input type="radio" name="funcao" value="Líder"> Líder</label>
+                </div>
+            </div>
+
+            <!-- SAÚDE -->
+            <div class="form-group">
+                <label for="saude">Alguma condição de saúde ou restrição física?</label>
+                <textarea id="saude" name="mensagem_saude" rows="3" placeholder="Ex: Problema no joelho, asma, etc."></textarea>
+            </div>
+
+            <button type="submit">Confirmar minha participação!</button>
+        </form>
+    </div>
+
+</body>
+</html>
